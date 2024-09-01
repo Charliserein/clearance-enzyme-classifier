@@ -1,0 +1,12 @@
+Python==3.8.11
+XGBoost 
+torch
+pandas
+sys
+Bio
+NumPy 
+keras
+joblib
+argparse
+scikit-learn
+ifeature
