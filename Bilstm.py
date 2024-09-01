@@ -38,23 +38,21 @@ def save_results(output, data, output_file="lstm.out", result_file="lstm.res"):
     result_df.index = list(data.keys())  # Set the index to sample names
     result_df.to_csv(result_file, sep=" ", header=False)
 
-# Initialize model parameters
-input_size = 20  # Adjust this according to your actual input size
+
+input_size = 20  
 hidden_size = 64
-output_size = 2  # Adjust this according to the number of classes
+output_size = 2  
 model = BiLSTMNet(input_size, hidden_size, output_size)
 
 # Load the trained model state
 model.load_state_dict(torch.load('lstm_class_model.pth'))
 model.eval()
 
-# Load data
-data = load_data('DPC.out')
-tensor_data = torch.tensor(list(data.values()), dtype=torch.float32).unsqueeze(1)  # Add a dimension for the sequence
 
-# Make predictions
+data = load_data('DPC.out')
+tensor_data = torch.tensor(list(data.values()), dtype=torch.float32).unsqueeze(1)  
+
 with torch.no_grad():
     output = model(tensor_data)
 
-# Save the results
 save_results(output, data)
