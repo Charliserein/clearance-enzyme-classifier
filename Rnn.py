@@ -19,7 +19,7 @@ LEARNING_RATE = 0.002
 HIDDEN_DIM = 128  # RNN隐藏层维度
 NUM_LAYERS = 2  # RNN层数
 DROPOUT_VALUE = 0.5
-MODEL_PATH = '3_27classes.h5'
+MODEL_PATH = 'weight1classes.h5'
 
 # RNN模型定义
 class EmbeddingRNN(nn.Module):
