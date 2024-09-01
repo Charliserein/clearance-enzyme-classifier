@@ -10,7 +10,6 @@ from sklearn.preprocessing import MinMaxScaler
 import argparse
 import sys
 
-# 配置参数
 MAX_SEQUENCE_LENGTH = 6269  # 最大序列长度
 BATCH_SIZE = 20  # 批处理大小
 CLASS_NUM = 2  # 类别数（输出类别数）
@@ -19,9 +18,9 @@ LEARNING_RATE = 0.001  # 学习率
 HIDDEN_DIM = 128  # RNN隐藏层维度
 NUM_LAYERS = 2  # RNN层数
 DROPOUT_VALUE = 0.5  # Dropout比率
-DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")  # 设备（GPU或CPU）
-MODEL_PATH = '4_1yesORno.h5'  # 模型路径
-EPOCHS = 3  # 训练轮数
+DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")  #
+MODEL_PATH = 'weight2class.h5'  
+EPOCHS = 3  #
 
 # 定义RNN模型
 class EmbeddingRNN(nn.Module):
@@ -39,7 +38,6 @@ class EmbeddingRNN(nn.Module):
         out = self.fc(x)  # 输入经过全连接层
         return out
 
-# 加载模型
 def load_model(vocab_size, embedding_dim, hidden_dim, class_size, model_path, device):
     model = EmbeddingRNN(vocab_size, embedding_dim, hidden_dim, class_size)  # 初始化模型
     model.load_state_dict(torch.load(model_path, map_location=device))  # 加载预训练模型参数
@@ -80,19 +78,16 @@ def main(input_tensor_file, output_file, model_path):
     # 加载预训练模型
     model = load_model(MAX_NB_CHARS, EMBEDDING_DIM, HIDDEN_DIM, CLASS_NUM, model_path, DEVICE)
     
-    # 进行预测
     predictions = predict(model, query_dataloader)
     
-    # 保存预测结果
     save_predictions(predictions, output_file)
 
-# 程序入口
 if __name__ == "__main__":
     if len(sys.argv) != 3:
         print("Usage: python script.py <input_tensor_file> <output_file>")
         sys.exit(1)
     
     input_tensor_file = sys.argv[1]  # 输入张量文件
-    output_file = sys.argv[2]  # 输出结果文件
+    output_file = sys.argv[2]  
     
-    main(input_tensor_file, output_file, MODEL_PATH)  # 调用主函数
+    main(input_tensor_file, output_file, MODEL_PATH)  
