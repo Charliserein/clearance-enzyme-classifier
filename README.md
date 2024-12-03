@@ -14,7 +14,6 @@ we proposed a multi-label ensemble model framework named Clearance-enzyme-classi
 
 ![image](https://github.com/user-attachments/assets/e65a2dd2-8b02-4551-9317-227bf277393c)
 ![image](https://github.com/user-attachments/assets/80ef5596-4843-4c6b-acf5-0cb2b5875b06)
-![image](https://github.com/user-attachments/assets/58778015-3262-48df-90fb-d9f6950f581c)
 
 we present the accuracy and recall of the three algorithms in classifying different categories (we randomly selected 20 categories). RNN-attention: This model shows high stability in both accuracy and recall, making it suitable for tasks that strongly rely on temporal or sequential information. Its fluctuations are relatively small; although there was a significant drop during the 15th iteration, it quickly recovered and performed excellently overall. BiLSTM: While it performs outstandingly in accuracy, close to RNN-attention, the recall shows larger fluctuations, particularly with notable drops during the 10th and 15th iterations, possibly due to instability in handling some difficult samples. Nevertheless, it remains a very robust model overall. XGBoost: This model performed slightly worse in early training; although its accuracy gradually caught up with the other models, it showed significantly greater volatility. The notable drop during the 15th iteration suggests that this model may be sensitive to certain patterns or features in the training dataset. For tasks requiring high stability, XGBoost may not perform as well as the first two models.
 
